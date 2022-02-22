@@ -33,13 +33,28 @@ public class CustomerService {
 	// findById()
 	@Transactional(readOnly=true)
 	public Customer getById(int id) {
+		
+		if(id <= 0) {
+			log.warn("Unable to get id for id # {}", id);
+		}
+		
+		
 		return customerRepo.getById(id);
 	}
 	
 	// insert
 	@Transactional(propagation=Propagation.REQUIRES_NEW) // creates a new transaction so that methods are isolated if other methods are being called
 	public Customer add(Customer c) {
-		return customerRepo.save(c);
+		
+		Customer returnedCustomer = customerRepo.save(c);
+		
+		if(returnedCustomer.getId() > 0) {
+			log.info("Successfully returned User with id {}", returnedCustomer.getId());
+		} else {
+			log.warn("Could not add user with username {}",  c.getUserName());
+		}
+		
+		return returnedCustomer;
 	}
 	
 	@Transactional(propagation=Propagation.REQUIRED) // the default variable, does not create a new transaction 
