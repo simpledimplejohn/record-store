@@ -8,6 +8,10 @@ public class RecordStoreApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RecordStoreApplication.class, args);
+		
+		
+
+		
 	}
 
 }
