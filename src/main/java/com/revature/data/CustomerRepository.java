@@ -17,7 +17,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer>{
 	// makes basic crud methods
 	
 	// these are methods that are not created automatically
-	Optional<Customer> findByUsername(String username); //sql infered from name
+	Optional<Customer> findByUserName(String userName); //sql infered from name
 	
 	public List<Customer> findByOrderByLastName(); // returns all in order
 	

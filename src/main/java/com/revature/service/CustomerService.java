@@ -48,8 +48,8 @@ public class CustomerService {
 	}
 	
 	@Transactional(readOnly=true)
-	public Customer getByCustomerName(String username) {
-		return customerRepo.findByUsername(username).orElseThrow(() -> new CustomerNotFoundException("No customer found with this username" + username)) ;
+	public Customer getByUserName(String userName) {
+		return customerRepo.findByUserName(userName).orElseThrow(() -> new CustomerNotFoundException("No customer found with this username" + userName)) ;
 	}
 	
 	
