@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,22 +34,26 @@ public class CustomerController {
 	
 	// find by username
 	@GetMapping("/find/{username}")
-	public Customer findByUserName(@PathVariable("username") String username) {
+	public ResponseEntity<Customer> findByUserName(@PathVariable("username") String username) {
 		
-		return custServ.getByUserName(username);
+		return ResponseEntity.ok(custServ.getByUserName(username));
 		
 	}
-	
+	// may not need response entity... but useful
 	@PostMapping("/add") // will check all against the validation in the model
-	public Customer addCustomer(@Valid @RequestBody Customer c) { //gets customer from request body, makes sure its valid
+	public ResponseEntity<Customer> addCustomer(@Valid @RequestBody Customer c) { //gets customer from request body, makes sure its valid
 		
-		return custServ.add(c); //the return is the json data from the post request
+		return ResponseEntity.ok(custServ.add(c)); //the return is the json data from the post request
 		
 	}
 	
-	@GetMapping("/{custId}")
-	public Customer getById(@PathVariable("custId") int id) {
-		return custServ.getById(id);
+	// sometimes this won't work, 
+	// GetMapping is sposed to put the request in the reponse body, but it needs a bit of help
+	// must be done manually by using ResponseEnitty in the method signature and in the return type
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Customer> findCustomerById(@PathVariable("id") int id) {
+		return ResponseEntity.ok(custServ.getById(id));
 		
 	}
 	
