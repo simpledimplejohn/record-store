@@ -19,38 +19,26 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Entity
-@Table(name="album")
+@Table(name="track")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
-public class Album {
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id") //for network issues
+
+public class Track {
 	
 	@Id
-	@Column(name="album_id")
+	@Column(name="track_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String albumName;
-	private String releaseDate;
-	private double price;
+	private String title;
+	private String duration;
 	
 	@ManyToMany
-	@JoinTable(name="album_track",
-	joinColumns = @JoinColumn(name="album_id"),
-	inverseJoinColumns = @JoinColumn(name="track_id"))
-	private Set<Track> trackList;
+	@JoinTable(name= "track_artist",
+	joinColumns = @JoinColumn(name="track_id"),
+	inverseJoinColumns = @JoinColumn(name="artist_id"))
+	private Set<Artist> artistList;
 
-	public Album(String albumName, String releaseDate, double price, Set<Track> trackList) {
-		super();
-		this.albumName = albumName;
-		this.releaseDate = releaseDate;
-		this.price = price;
-		this.trackList = trackList;
-	}
-	
-	
-	
-	
 }

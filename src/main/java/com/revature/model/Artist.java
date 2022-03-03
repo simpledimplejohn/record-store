@@ -1,15 +1,10 @@
 package com.revature.model;
 
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -19,37 +14,25 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Entity
-@Table(name="album")
+@Table(name="artist")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
-public class Album {
+public class Artist {
 	
 	@Id
-	@Column(name="album_id")
+	@Column(name="artist_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String albumName;
-	private String releaseDate;
-	private double price;
-	
-	@ManyToMany
-	@JoinTable(name="album_track",
-	joinColumns = @JoinColumn(name="album_id"),
-	inverseJoinColumns = @JoinColumn(name="track_id"))
-	private Set<Track> trackList;
-
-	public Album(String albumName, String releaseDate, double price, Set<Track> trackList) {
+	private String firstName;
+	private String lastName;
+	public Artist(String firstName, String lastName) {
 		super();
-		this.albumName = albumName;
-		this.releaseDate = releaseDate;
-		this.price = price;
-		this.trackList = trackList;
+		this.firstName = firstName;
+		this.lastName = lastName;
 	}
-	
 	
 	
 	
