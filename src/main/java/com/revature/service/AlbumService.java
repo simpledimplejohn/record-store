@@ -29,4 +29,8 @@ public class AlbumService {
 		return albumRepo.findByAlbumName(albumName).orElseThrow(() -> new AlbumNotFoundException("No Album found with this name" + albumName));
 	}
 	
+	public Album findById(int id) {
+		return albumRepo.findById(id).orElseThrow(() -> new AlbumNotFoundException("No Album Found with this id " + id));
+	}
+	
 }

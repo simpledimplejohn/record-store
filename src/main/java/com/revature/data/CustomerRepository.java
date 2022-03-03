@@ -28,5 +28,12 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer>{
 	@Query("FROM Customer WHERE email LIKE %:pattern")
 	public List<Customer> findByEmailContains(); // al/ows us to call a partial email and get the full email "johnsmi" -> return "johnsmith@gmail.com"
 	
+	// included
+	// .findAll()
+	// .add(Object)
+	// .getById(id)
+	// .remove(id)
+	
+	// supports;
 	
 }
