@@ -1,10 +1,15 @@
 package com.revature.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -45,11 +50,30 @@ public class Customer {
 	private String address;
 	// List of albums 
 	
-	
-	
-	
-	// constructor without id
+	@ManyToMany
+	@JoinTable(name= "customer_album",
+	joinColumns = @JoinColumn(name="customer_id"),
+	inverseJoinColumns = @JoinColumn(name= "album_id"))
+	// ToDo Json View profile???
+	private Set<Album> albums;
 
+	
+	// constructor without id for hibernate
+	public Customer(@Length(min = 2) String firstName, String lastName,
+			@NotBlank @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") String userName, @NotBlank String password,
+			@Email String email, String address, Set<Album> albums) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.userName = userName;
+		this.password = password;
+		this.email = email;
+		this.address = address;
+		this.albums = albums;
+	}
+	
+
+	
 	
 
 	

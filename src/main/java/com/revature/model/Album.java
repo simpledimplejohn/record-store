@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 public class Album {
 	
 	@Id
-	@Column(name="customer_id")
+	@Column(name="album_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String albumName;
