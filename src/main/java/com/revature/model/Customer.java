@@ -43,31 +43,13 @@ public class Customer {
 	@Email // what happens if we send an invalid email?
 	private String email;
 	private String address;
-	private String state;
-	private String country;
-	private String zipcode;
-	private String phoneNumber;
+	// List of albums 
 	
-	// foreign key for sales rep
-	private int salesRepId;
+	
+	
+	
 	// constructor without id
-	public Customer(@Length(min = 2) String firstName, String lastName,
-			@NotBlank @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") String userName, @NotBlank String password,
-			@Email String email, String address, String state, String country, String zipcode, String phoneNumber,
-			int salesRepId) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.userName = userName;
-		this.password = password;
-		this.email = email;
-		this.address = address;
-		this.state = state;
-		this.country = country;
-		this.zipcode = zipcode;
-		this.phoneNumber = phoneNumber;
-		this.salesRepId = salesRepId;
-	}
+
 	
 
 	

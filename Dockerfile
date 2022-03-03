@@ -1,4 +1,4 @@
-FROM openjdk:11-jdk-alpine
+FROM adoptopenjdk/openjdk11:ubi
 
 COPY /target/record-store-0.0.1-SNAPSHOT.jar record-store-0.0.1-SNAPSHOT.jar
 
