@@ -9,5 +9,7 @@ import com.revature.model.Artist;
 
 @Repository
 public interface ArtistRepository extends JpaRepository<Artist, Integer>{
+	
 	Optional<Artist> findByLastName(String lastName);
+	
 }
