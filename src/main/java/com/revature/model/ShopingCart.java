@@ -27,6 +27,7 @@ public class ShopingCart {
 	@Column(name="cart_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	// TODO change date to date value
 	private String date;
 	private double total;
 	

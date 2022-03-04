@@ -33,6 +33,7 @@ public class Track {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String title;
+	// TODO change duration to time value
 	private String duration;
 	
 	@ManyToMany
