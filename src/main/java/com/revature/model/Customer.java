@@ -53,15 +53,13 @@ public class Customer {
 	@ManyToMany
 	@JoinTable(name= "customer_album",
 	joinColumns = @JoinColumn(name="customer_id"),
-	inverseJoinColumns = @JoinColumn(name= "album_id"))
+	inverseJoinColumns = @JoinColumn(name= "cart_id"))
 	// ToDo Json View profile???
-	private Set<Album> albums;
+	private Set<ShopingCart> shoppingCarts;
 
-	
-	// constructor without id for hibernate
 	public Customer(@Length(min = 2) String firstName, String lastName,
 			@NotBlank @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") String userName, @NotBlank String password,
-			@Email String email, String address, Set<Album> albums) {
+			@Email String email, String address, Set<ShopingCart> shoppingCarts) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -69,8 +67,12 @@ public class Customer {
 		this.password = password;
 		this.email = email;
 		this.address = address;
-		this.albums = albums;
+		this.shoppingCarts = shoppingCarts;
 	}
+
+	
+	// constructor without id for hibernate
+
 	
 
 	
