@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.data.CartRepository;
 import com.revature.exception.CartNotFoundException;
-import com.revature.model.ShopingCart;
+import com.revature.model.Cart;
 
 @Service
 public class CartService {
@@ -16,19 +16,16 @@ public class CartService {
 	@Autowired
 	CartRepository cartRepo;
 	
-	public Set<ShopingCart> findAll() {
+	public Set<Cart> findAll() {
 		return cartRepo.findAll().stream().collect(Collectors.toSet());
 	}
 	
-	public ShopingCart add(ShopingCart s) {
+	public Cart add(Cart s) {
 		return cartRepo.save(s);
 	}
 	
-	public ShopingCart findByCartDate(String cartDate) {
-		return cartRepo.findByShopingCartDate(cartDate).orElseThrow(() -> new CartNotFoundException("No cart found with this date" + cartDate));
-	}
 	
-	public ShopingCart findById(int id) {
+	public Cart findById(int id) {
 		return cartRepo.findById(id).orElseThrow(() -> new CartNotFoundException("No cart found with this id" + id));
 	}
 	

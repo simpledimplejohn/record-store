@@ -55,11 +55,11 @@ public class Customer {
 	joinColumns = @JoinColumn(name="customer_id"),
 	inverseJoinColumns = @JoinColumn(name= "cart_id"))
 	// ToDo Json View profile???
-	private Set<ShopingCart> shoppingCarts;
+	private Set<Cart> shoppingCarts;
 
 	public Customer(@Length(min = 2) String firstName, String lastName,
 			@NotBlank @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") String userName, @NotBlank String password,
-			@Email String email, String address, Set<ShopingCart> shoppingCarts) {
+			@Email String email, String address, Set<Cart> shoppingCarts) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;

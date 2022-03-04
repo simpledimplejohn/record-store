@@ -17,11 +17,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="shopingcart")
+@Table(name="cart")
 @Data
 @NoArgsConstructor 
 @AllArgsConstructor
-public class ShopingCart {
+public class Cart {
 	
 	@Id
 	@Column(name="cart_id")
@@ -37,7 +37,7 @@ public class ShopingCart {
 	inverseJoinColumns = @JoinColumn(name="album_id"))
 	private List<Album> albums;
 
-	public ShopingCart(String date, double total, List<Album> albums) {
+	public Cart(String date, double total, List<Album> albums) {
 		super();
 		this.date = date;
 		this.total = total;
