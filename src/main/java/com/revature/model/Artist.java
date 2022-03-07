@@ -28,6 +28,7 @@ public class Artist {
 	private int id;
 	private String firstName;
 	private String lastName;
+	
 	public Artist(String firstName, String lastName) {
 		super();
 		this.firstName = firstName;

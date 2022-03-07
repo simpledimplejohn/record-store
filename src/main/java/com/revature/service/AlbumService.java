@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.data.AlbumRepository;
+import com.revature.data.TrackRepository;
 import com.revature.exception.AlbumNotFoundException;
 import com.revature.model.Album;
 
@@ -15,6 +16,9 @@ public class AlbumService {
 	
 	@Autowired
 	AlbumRepository albumRepo;
+	
+	@Autowired
+	TrackRepository trackRepo;
 	
 	public Set<Album> findAll() {
 		return albumRepo.findAll().stream().collect(Collectors.toSet());
@@ -31,5 +35,12 @@ public class AlbumService {
 	public Album findById(int id) {
 		return albumRepo.findById(id).orElseThrow(() -> new AlbumNotFoundException("No Album Found with this id " + id));
 	}
+	
+	// Add a track to the album here
+	
+//	public Track add(Track t) {
+//		return 
+//	}
+	
 	
 }

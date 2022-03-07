@@ -1,5 +1,6 @@
 package com.revature.controller;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +12,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.model.Album;
+import com.revature.model.Track;
 import com.revature.service.AlbumService;
+import com.revature.service.TrackService;
 
 @RestController
 @RequestMapping("/album")
 public class AlbumController {
 	
+	private static final int Track = 0;
+
 	@Autowired
 	AlbumService albumServ;
+	
+	@Autowired
+	TrackService trackServ;
 	
 	@GetMapping
 	public Set<Album> getAll() {
@@ -39,5 +47,22 @@ public class AlbumController {
 	public Album add(@RequestBody Album a) {
 		return albumServ.add(a);
 	}
+	
+	@PostMapping("/{id}/addtrack")
+	public int addTrackToAlubm(@RequestBody Track t, @PathVariable("id") int id) {
+		// add the track to the track object
+		Set<Track> trackList = new HashSet<>();
+		
+		trackList.add(t);
+		// add the track to the Album list
+		Album a = albumServ.findById(id);
+		a.setTrackList(trackList);
+		
+		
+		
+		return t.getId();
+	}
+	
+	
 	
 }
