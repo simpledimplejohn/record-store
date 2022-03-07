@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,9 +49,12 @@ public class AlbumController {
 		return albumServ.add(a);
 	}
 	
-	@PostMapping("/{id}/addtrack")
-	public int addTrackToAlubm(@RequestBody Track t, @PathVariable("id") int id) {
+	// add track to exisiting alubm is a Put request using save
+	@PutMapping("/{id}/addtrack")
+	public Album addTrackToAlbum(@RequestBody Track t, @PathVariable("id") int id) {
 		// add the track to the track object
+		
+		trackServ.add(t);
 		Set<Track> trackList = new HashSet<>();
 		
 		trackList.add(t);
@@ -60,7 +64,7 @@ public class AlbumController {
 		
 		
 		
-		return t.getId();
+		return albumServ.add(a);
 	}
 	
 	
