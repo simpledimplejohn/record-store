@@ -2,6 +2,7 @@ package com.revature.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.data.TrackRepository;
@@ -11,6 +12,7 @@ import com.revature.model.Track;
 @Service
 public class TrackService {
 	
+	@Autowired
 	TrackRepository trackRepo;
 	
 	public List<Track> findAll() {

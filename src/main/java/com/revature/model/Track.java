@@ -42,4 +42,13 @@ public class Track {
 	inverseJoinColumns = @JoinColumn(name="artist_id"))
 	private Set<Artist> artistList;
 
+	public Track(String title, String duration, Set<Artist> artistList) {
+		super();
+		this.title = title;
+		this.duration = duration;
+		this.artistList = artistList;
+	}
+	
+	
+
 }
