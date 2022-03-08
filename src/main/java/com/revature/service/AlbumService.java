@@ -27,7 +27,8 @@ public class AlbumService {
 	public Set<Album> findAll() {
 		return albumRepo.findAll().stream().collect(Collectors.toSet());
 	}
-
+	// adds an album, a track list, and an artist list
+	
 	public Album add(Album a) {
 
 		if (a.getTrackList() != null) {
