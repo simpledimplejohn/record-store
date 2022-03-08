@@ -2,6 +2,7 @@ package com.revature.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.data.ArtistRepository;
@@ -10,7 +11,8 @@ import com.revature.model.Artist;
 
 @Service
 public class ArtistService {
-
+	
+	@Autowired
 	ArtistRepository artistRepo;
 	
 	public List<Artist> findAll() {
