@@ -28,6 +28,7 @@ public class AlbumController {
 	
 	@Autowired
 	TrackService trackServ;
+
 	
 	@GetMapping
 	public Set<Album> getAll() {
@@ -55,18 +56,30 @@ public class AlbumController {
 		// add the track to the track object
 		
 		trackServ.add(t);
-		Set<Track> trackList = new HashSet<>();
+
+		Album a = albumServ.findById(id);
+		
+		Set<Track> trackList = a.getTrackList();
 		
 		trackList.add(t);
-		// add the track to the Album list
-		Album a = albumServ.findById(id);
+		
 		a.setTrackList(trackList);
-		
-		
-		
 		return albumServ.add(a);
 	}
 	
+	@PutMapping("/{id}/addtracks")
+	public Album addTrackListToAlbum(@RequestBody Set<Track> trackSet, @PathVariable("id") int id) {
+		
+		for(Track t : trackSet) {
+			trackServ.add(t);
+		}
+		
+		Album a = albumServ.findById(id);
+		
+		a.setTrackList(trackSet);
+		
+		return albumServ.add(a);
+	}
 	
 	
 }
