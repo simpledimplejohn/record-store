@@ -1,7 +1,8 @@
 package com.revature.model;
 
-import java.util.Set;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -48,18 +51,23 @@ public class Customer {
 	@Email // what happens if we send an invalid email?
 	private String email;
 	private String address;
-	// List of albums 
+
+// has one cart	
+	@OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn
+	private Cart cart;
 	
+	// List of albums already purchased
 	@ManyToMany
 	@JoinTable(name= "customer_album",
 	joinColumns = @JoinColumn(name="customer_id"),
-	inverseJoinColumns = @JoinColumn(name= "cart_id"))
-	// ToDo Json View profile???
-	private Set<Cart> shoppingCarts;
+	inverseJoinColumns = @JoinColumn(name= "album_id"))
+	private List<Album> albumList;
 
+// constructor without id for hibernate
 	public Customer(@Length(min = 2) String firstName, String lastName,
 			@NotBlank @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") String userName, @NotBlank String password,
-			@Email String email, String address, Set<Cart> shoppingCarts) {
+			@Email String email, String address, Cart cart, List<Album> albumList) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -67,11 +75,13 @@ public class Customer {
 		this.password = password;
 		this.email = email;
 		this.address = address;
-		this.shoppingCarts = shoppingCarts;
+		this.cart = cart;
+		this.albumList = albumList;
 	}
 
+
 	
-	// constructor without id for hibernate
+
 
 	
 

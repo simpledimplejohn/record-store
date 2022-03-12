@@ -35,7 +35,8 @@ public class Album {
 	private String albumName;
 	private String releaseDate;
 	private double price;
-	
+
+// has list of tracks	
 	@ManyToMany
 	@JoinTable(name="album_track",
 	joinColumns = @JoinColumn(name="album_id"),

@@ -35,6 +35,6 @@ public class Artist {
 		this.lastName = lastName;
 	}
 	
-	
+	 	
 	
 }
