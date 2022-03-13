@@ -88,6 +88,9 @@ public class CustomerController {
 		
 		// get customers cart
 		Cart ct = c.getCart();
+		
+		int ctid = ct.getId();
+		
 		// get carts album list
 		List<Album> albumList = ct.getAlbums();
 		// add album to cart list
@@ -100,10 +103,10 @@ public class CustomerController {
 		// set price
 		ct.setTotal(price);
 		
-		// add updated cart to customer
-		c.setCart(ct);
+		// add updated cart through cartServ
+		cartServ.add(ct);
 		// save updated customer 
-		return custServ.add(c);
+		return c;
 	}
 	
 	
