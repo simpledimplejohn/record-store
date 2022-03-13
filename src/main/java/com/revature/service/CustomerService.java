@@ -50,6 +50,8 @@ public class CustomerService {
 	@Transactional(propagation=Propagation.REQUIRES_NEW) // creates a new transaction so that methods are isolated if other methods are being called
 	public Customer add(Customer c) {
 		
+		cartRepo.save(c.getCart());
+		
 		Customer returnedCustomer = customerRepo.save(c);
 		
 		if(returnedCustomer.getId() > 0) {
@@ -57,6 +59,9 @@ public class CustomerService {
 		} else {
 			log.warn("Could not add user with username {}",  c.getUserName());
 		}
+		
+		
+		
 		// handled in the controller
 //		if(c.getCart() != null) {
 //			Cart ct =  c.getCart();

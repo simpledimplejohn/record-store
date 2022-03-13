@@ -54,19 +54,7 @@ public class CustomerController {
 	@PostMapping("/add") // will check all against the validation in the model
 	public ResponseEntity<Customer> addCustomer(@Valid @RequestBody Customer c) { //gets customer from request body, makes sure its valid
 		
-		List<Cart> cartList = c.getCarts();
-		
-		System.out.println("cart List" +cartList);
-		// set customer to cart
-		// add the carts to the cartServ
-		cartList.forEach((ct) -> {
-			ct.setCustomer(c);
-			cartServ.add(ct);
-			});
-		// add the cartList to the customer
-		c.setCarts(cartList);
-		
-		// add customer to customer serv
+
 		return ResponseEntity.ok(custServ.add(c)); //the return is the json data from the post request
 		
 	}
