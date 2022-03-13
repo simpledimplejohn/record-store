@@ -57,11 +57,11 @@ public class CustomerService {
 		} else {
 			log.warn("Could not add user with username {}",  c.getUserName());
 		}
-		
-		if(c.getCart() != null) {
-			Cart ct =  c.getCart();
-			cartRepo.save(ct);
-		}
+		// handled in the controller
+//		if(c.getCart() != null) {
+//			Cart ct =  c.getCart();
+//			cartRepo.save(ct);
+//		}
 
 		
 		return returnedCustomer;
