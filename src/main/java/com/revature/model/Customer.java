@@ -3,6 +3,7 @@ package com.revature.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -55,11 +57,10 @@ public class Customer {
 
 // has one cart	
 	@ToString.Exclude
-	@OneToMany(mappedBy = "customer",
-//	cascade = CascadeType.ALL,
-			orphanRemoval = true)
-	@JsonManagedReference
-	private List<Cart> carts = new ArrayList<>();
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "cart_id", referencedColumnName= "id") //possibly customer_id??
+	private Cart cart;
+
 
 	// List of albums already purchased
 	@ToString.Exclude
@@ -67,6 +68,41 @@ public class Customer {
 	@JoinTable(name = "customer_album", joinColumns = @JoinColumn(name = "customer_id"), inverseJoinColumns = @JoinColumn(name = "album_id"))
 	private List<Album> albumList;
 
-// constructor without id for hibernate
 
+	public Customer(@Length(min = 2) String firstName, String lastName,
+			@NotBlank @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") String userName, @NotBlank String password,
+			@Email String email, String address, Cart cart, List<Album> albumList) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.userName = userName;
+		this.password = password;
+		this.email = email;
+		this.address = address;
+		this.cart = cart;
+		this.albumList = albumList;
+	}
+
+// constructor without id for hibernate
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
