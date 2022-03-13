@@ -74,39 +74,37 @@ public class CustomerController {
 		return c;
 	}
 
-// add album to customers cart
-//	@PutMapping("/{id}/addAlbumToCart")
-//	public Customer addAlbumToCart(@RequestBody Album a, @PathVariable("id") int id) {
-//		
-//		double price = a.getPrice();
-//		
-//		albServ.add(a);
-//		
-//		Customer c = custServ.getById(id);
-//		
-//		Cart ct = c.getCart();
-//		
-//		List<Album> albumList = ct.getAlbums();
-//		
-//		albumList.add(a);
-//		
-//		ct.setAlbums(albumList);
-//		System.out.println(ct);
-//		
-//		price += ct.getTotal();
-//		
-//		ct.setTotal(price);
-//		
-//		if(ct.getAlbums() != null) {
-//			ct.setAlbums(null);			
-//		}
-//		
-//		c.setCart(ct);
-//		
-//		
-//		
-//		return c;
-//	}
+// add existing album to an existing customer
+	@PutMapping("/{cid}/addAlbumToCart/{aid}")
+	public Customer addAlbumToCart(@PathVariable("cid") int cid, @PathVariable("aid") int aid) {
+		
+		// get album
+		Album al = albServ.findById(aid);
+		// get price
+		double price = al.getPrice();
+		
+		// get customer
+		Customer c = custServ.getById(cid);
+		
+		// get customers cart
+		Cart ct = c.getCart();
+		// get carts album list
+		List<Album> albumList = ct.getAlbums();
+		// add album to cart list
+		albumList.add(al);
+		// set cart list to cart
+		ct.setAlbums(albumList);
+		System.out.println(ct);
+		// update price
+		price += ct.getTotal();
+		// set price
+		ct.setTotal(price);
+		
+		// add updated cart to customer
+		c.setCart(ct);
+		// save updated customer 
+		return custServ.add(c);
+	}
 	
 	
 	// sometimes this won't work, 
