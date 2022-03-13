@@ -10,10 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,9 +33,7 @@ public class Cart {
 
 // link to customer	
 	@ToString.Exclude
-	@ManyToOne()
-	@JoinColumn(name= "customer_id")
-	@JsonBackReference
+	@OneToOne(mappedBy = "cart")
 	private Customer customer;
 
 // Needs to have temp list of albums linked to album	
