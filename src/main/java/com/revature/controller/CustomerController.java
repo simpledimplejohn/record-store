@@ -97,7 +97,6 @@ public class CustomerController {
 		albumList.add(al);
 		// set cart list to cart
 		ct.setAlbums(albumList);
-		System.out.println(ct);
 		// update price
 		price += ct.getTotal();
 		// set price
