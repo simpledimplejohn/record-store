@@ -58,7 +58,7 @@ public class Customer {
 // has one cart	
 	@ToString.Exclude
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "cart_id", referencedColumnName= "id") //possibly customer_id??
+	@JoinColumn(name = "cart_id") 
 	private Cart cart;
 
 
@@ -69,6 +69,7 @@ public class Customer {
 	private List<Album> albumList;
 
 
+// constructor without id for hibernate
 	public Customer(@Length(min = 2) String firstName, String lastName,
 			@NotBlank @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") String userName, @NotBlank String password,
 			@Email String email, String address, Cart cart, List<Album> albumList) {
@@ -83,7 +84,6 @@ public class Customer {
 		this.albumList = albumList;
 	}
 
-// constructor without id for hibernate
 	
 	
 }
