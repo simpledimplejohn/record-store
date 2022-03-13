@@ -1,6 +1,5 @@
 package com.revature.service;
 
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -11,14 +10,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.revature.data.CartRepository;
 import com.revature.data.CustomerRepository;
 import com.revature.exception.CustomerNotFoundException;
+import com.revature.model.Cart;
 import com.revature.model.Customer;
 
 @Service
 public class CustomerService {
 	
 	private Logger log = LoggerFactory.getLogger(this.getClass());
+	
+	@Autowired
+	CartRepository cartRepo;
 	
 	@Autowired
 	CustomerRepository customerRepo;
@@ -42,7 +46,7 @@ public class CustomerService {
 		return customerRepo.getById(id);
 	}
 	
-	// insert
+	// Creates a cart when the customer is added
 	@Transactional(propagation=Propagation.REQUIRES_NEW) // creates a new transaction so that methods are isolated if other methods are being called
 	public Customer add(Customer c) {
 		
@@ -54,8 +58,17 @@ public class CustomerService {
 			log.warn("Could not add user with username {}",  c.getUserName());
 		}
 		
+		if(c.getCart() != null) {
+			Cart ct =  c.getCart();
+			cartRepo.save(ct);
+		}
+
+		
 		return returnedCustomer;
 	}
+	
+	// add cart to customer
+	
 	
 	@Transactional(propagation=Propagation.REQUIRED) // the default variable, does not create a new transaction 
 	public void remove(int id) {

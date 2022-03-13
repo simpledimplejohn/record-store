@@ -25,10 +25,10 @@ public class AlbumController {
 
 	@Autowired
 	AlbumService albumServ;
-	
+// add track to album	
 	@Autowired
 	TrackService trackServ;
-	
+// add artist to track to album	
 	@Autowired
 	ArtistService artServ;
 

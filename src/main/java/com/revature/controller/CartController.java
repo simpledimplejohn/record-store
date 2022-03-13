@@ -20,13 +20,12 @@ public class CartController {
 	@Autowired
 	CartService cartServ;
 	
+
+	
 	@GetMapping
 	public Set<Cart> getall() {
 		return cartServ.findAll();
 	}
-	
-
-
 	
 	@GetMapping("/{id}")
 	public Cart findById(@PathVariable("id") int id) {
@@ -37,5 +36,7 @@ public class CartController {
 	public Cart add(@RequestBody Cart s) {
 		return cartServ.add(s);
 	}
+
+	
 	
 }
