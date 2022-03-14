@@ -75,6 +75,8 @@ public class CustomerController {
 	}
 
 // add existing album to an existing customer
+	
+// currently working for add album to cart
 	@PutMapping("/{cid}/addAlbumToCart/{aid}")
 	public Customer addAlbumToCart(@PathVariable("cid") int cid, @PathVariable("aid") int aid) {
 		
