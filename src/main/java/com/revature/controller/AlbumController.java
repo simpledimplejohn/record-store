@@ -1,5 +1,6 @@
 package com.revature.controller;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,14 @@ public class AlbumController {
 		return albumServ.findByAlbumName(albumName);
 	}
 	
+	
+	// get tracks by album id
+	@GetMapping("/findAlbumTracks/{id}")
+	public List<Track> findAlbumTracks(@PathVariable("id") int id) {
+		Album a = albumServ.findById(id);		
+		return a.getTrackList();
+	}
+	
 	@GetMapping("/{id}")
 	public Album findById(@PathVariable("id") int id) {
 		return albumServ.findById(id);
@@ -62,7 +71,7 @@ public class AlbumController {
 
 		Album a = albumServ.findById(id);
 		
-		Set<Track> trackList = a.getTrackList();
+		List<Track> trackList = a.getTrackList();
 		
 		trackList.add(t);
 		
@@ -72,7 +81,7 @@ public class AlbumController {
 	
 	// add a track list to an existing album
 	@PutMapping("/{id}/addtracks")
-	public Album addTrackListToAlbum(@RequestBody Set<Track> trackSet, @PathVariable("id") int id) {
+	public Album addTrackListToAlbum(@RequestBody List<Track> trackSet, @PathVariable("id") int id) {
 		
 		for(Track t : trackSet) {
 			trackServ.add(t);

@@ -1,5 +1,6 @@
 package com.revature.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -44,9 +45,9 @@ public class Album {
 	@JoinTable(name="album_track",
 	joinColumns = @JoinColumn(name="album_id"),
 	inverseJoinColumns = @JoinColumn(name="track_id"))
-	private Set<Track> trackList;
+	private List<Track> trackList;
 
-	public Album(String albumName, String releaseDate, double price, Set<Track> trackList) {
+	public Album(String albumName, String releaseDate, double price, List<Track> trackList) {
 		super();
 		this.albumName = albumName;
 		this.releaseDate = releaseDate;
