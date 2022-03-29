@@ -44,7 +44,6 @@ public class AlbumController {
 		return albumServ.findByAlbumName(albumName);
 	}
 	
-	
 	// get tracks by album id
 	@GetMapping("/findAlbumTracks/{id}")
 	public List<Track> findAlbumTracks(@PathVariable("id") int id) {
