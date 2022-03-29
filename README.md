@@ -76,10 +76,6 @@ _[MIT](https://opensource.org/licenses/MIT)_
 
 _Copyright (c) 2022 John Blalock_
 
-## Github Pages Link
-
-[Portfolio](https://simpledimplejohn.github.io/Career-Quiz/)
-
 ## Contact Information
 
 _simpledimplejohn@gmail.com_
