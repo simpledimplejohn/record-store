@@ -34,17 +34,26 @@ As a user I can :
 
 | Route                                                               | Method | Status Code | Description                                                         |
 | ------------------------------------------------------------------- | ------ | ----------- | ------------------------------------------------------------------- |
-| /users                                                              | GET    | 200         | Returns a list of all users                                          |
-| /users/:id                                                           | GET    | 200         | Returns a the user with the id                                      |
-| /users                                                            | POST   | 201         | Creates a new user                                                     |
-| /users/find                                                       | POST   | 200        | find a user by email and password                                       |
-| /users/:id                                                         | PUT    | 200         | Updates the status of the user for the given ID                       |
-| /users/find/{email}                                                 | POST    | 200         | find a user by email                                                |
-| /users/:id                                                         | DELETE    | 200         | Delete the user for the given ID                                   |
-| /users/{id}/memories                                               | GET    | 200                                 | get all memories for a user |
-| /users/{id}/addmemory                                       | POST   | 201         | Add a memory for the user with the given ID  |            
-| /users/{userId}/memory/{memoryId}                                      | GET   | 200    |get memory with given ID for a user  with given user id  |         
-| /users/{userId}/memory/{memoryId}                                      | Delete   | 204    |delete memory with given ID for a user  with given user id  |     
+| /customers                                                          | GET    | 200         | Returns a list of all customers                                     |
+| /customers/:id                                                      | GET    | 200         | Returns a the user with the id                                      |
+| /customers/add                                                      | POST   | 201         | Creates a new user                                                  |
+| /customers/find/{username}                                          | POST   | 200         | find a user by username                                             |
+| /customers/:id                                                      | DELETE | 200         | Delete the user for the given ID                                    |
+| /customers/{id}/addCart                                             | PUT    | 201         | add cart to user                                                    |
+| /customers/{id}/addAlbumToCart/{id}                                 | PUT    | 201         | Add an album to a users cart                                        |            
+| /customers/{userId}/memory/{memoryId}                               | GET    | 200         | get memory with given ID for a user  with given user id             |         
+| /customers/{userId}/memory/{memoryId}                               | Delete | 204         | delete memory with given ID for a user  with given user id          | 
+| /album/find/{albumName}                                             | GET    |   200       |  finds album by album name                                          |
+| /album/findAlbumTrack/{id}                                          | GET    |   200       |  finds a track on the album by id                                   |
+| /album/{id}                                                         | GET    |   200       |  finds an album by id                                               |
+| /album/add                                                          | POST   |   201       |  adds an album                                                      |
+| /album/{id}/addtrack                                                | PUT    |   201       |  adds a track to an album by album id                               |
+| /album/{id}/addtracks                                               | PUT    |   201       |  adds a track list to an existing album                             |
+| /track/find{title}                                                  | GET    |   200       |  gets a track by track name                                         |    
+| /cart/                                                              | GET    |   200       |  Returns a list of all carts                                        |   
+| /cart/{id}                                                          | GET    |   200       |  Returns a cart by its id                                           |
+| /cart/add                                                           | POST   |   200       |  Adds a cart                                                        |
+
 
 
 ## Setup/Installation
