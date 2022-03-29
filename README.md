@@ -2,7 +2,7 @@
 
 Record store server provides the back end server and database connection for a Record Store.  This is a demo project that explores nested many to many relationships across a database and how to turn those into api endpoints.  This uses the PostgreSQL open database Record-Store as its template with Customers purchasing Albums, that have Tracks, with Artists, and Generas--these were turned into models.
 
-# Front End Repo
+# Front End Repository
 
 The front-end for this application has been written in Angular and can be found at this link:
 _[FRONT END](https://github.com/simpledimplejohn/record-store-front-end)_
@@ -50,14 +50,16 @@ As a user I can :
 ## Setup/Installation
 
 * _Download repo from github_
-* _Open the index.html file in your web browser_
+* _In the root folder run the command line command `mvn clean install`_
+* _Run the mavin file_
+* _Access on localhost://5000_
 
 ## Known Bugs and Future Changes
 
 * _Fix Cores Errors, add cores filter_
 * _Add validation to models_
 * _Add DTO's for increased security_
-* __
+* _Fix SonarCloud github actions_
 
 ## License
 
