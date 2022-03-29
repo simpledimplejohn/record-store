@@ -13,7 +13,7 @@ This web app was developed using :
   * Java, Junit , Mockito, Log4J , Maven .
   * PostgreSQL, Spring Data, Spring MVC, Spring Boot.
   * Angular 2+, TypeScript, JavaScript, Bootstrap , HTML , CSS.
-  *  AWS EC2, AWS RDS,  AWS CodePipeline, AWS S3, Docker.
+  * AWS EC2, AWS RDS,  AWS CodePipeline, AWS S3, Docker.
   * REST,  Sonarcloud, Agile-Scrum. 
 
 
@@ -74,7 +74,7 @@ As a user I can :
 
 _[MIT](https://opensource.org/licenses/MIT)_
 
-_Copyright (c) 2021 John Blalock_
+_Copyright (c) 2022 John Blalock_
 
 ## Github Pages Link
 
@@ -82,5 +82,4 @@ _Copyright (c) 2021 John Blalock_
 
 ## Contact Information
 
-Author John Blalock
 _simpledimplejohn@gmail.com_
